@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.mapper.MemberMapper;
 import com.gms.web.service.MemberService;
-@Service  //싱글톤 패턴
+@Service  //싱글톤 패턴 
 public class MemberServiceImpl implements MemberService {
 	Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	@Autowired MemberMapper memberMapper;
