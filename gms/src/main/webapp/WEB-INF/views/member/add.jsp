@@ -46,3 +46,10 @@
 	<input type="checkbox" name="subject" value="spring"/> Spring
 	</form>
 </section>
+<script>
+$("#joinBth").click(()=>{
+	$('#joinForm').attr({
+		action:app.x()+"/member/add",
+		method:"POST"
+	}).submit();
+</script>

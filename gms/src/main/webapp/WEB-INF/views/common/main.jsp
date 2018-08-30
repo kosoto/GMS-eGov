@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	<script src="${context}/resources/js/app.js"></script>
+	<%-- <script src="${context}/resources/js/app.js"></script> --%>
     <title>Freelancer - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${context}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <%-- <link href="${context}/resources/other_resources/dist/css/bootstrap.min.css" rel="stylesheet"> --%>
 
     <!-- Custom fonts for this template -->
     <link href="${context}/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

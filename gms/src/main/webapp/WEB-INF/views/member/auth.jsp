@@ -24,8 +24,37 @@
               <a id="mypage" class="nav-link py-3 px-0 px-lg-3 rounded mypage" >${member.name} 페이지</a>
             </li>
           </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a id="board_write" class="nav-link py-3 px-0 px-lg-3 rounded" >게시글쓰기</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a id="board_list" class="nav-link py-3 px-0 px-lg-3 rounded" >게시글목록보기</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
 </div>
-
+<script>
+$("#logout").click(()=>{
+	app.session.removeMember();
+	location.href = "${context}/member/logout";
+});
+$("#modify").click(()=>{
+	location.href = "${context}/move/enter/member/modify";
+});
+$('#remove').click(()=>{
+	location.href = "${context}/move/enter/member/remove";
+});
+$("#mypage").click(()=>{
+	location.href = "${context}/move/auth/member/retrieve";
+});
+$('#board_write').click(()=>{
+	alert('board_write 클릭');
+	location.href = "${context}/move/auth/board/register";
+});
+$('#board_list').click(()=>{
+	alert('board_list 클릭');
+});
+</script>

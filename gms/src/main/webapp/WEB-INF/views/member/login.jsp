@@ -10,4 +10,12 @@
 		<input id="login_btn" type="button" value="제출"/>
 	</form><br>
 </section>
+<script>
+$("#login_btn").click(()=>{
+	$("#loginForm").attr({
+		action:"${context}/member/login",
+		method:"POST"
+	}).submit();
+});
+</script>
 

@@ -30,5 +30,12 @@
         </div>
       </div>
     </nav>
-
 </div>
+<script type="text/javascript">
+$("#login").click(()=>{
+	location.href = "${context}/move/enter/member/login";
+});
+$("#join").click(()=>{
+	location.href = "${context}/move/enter/member/add";
+});
+</script>

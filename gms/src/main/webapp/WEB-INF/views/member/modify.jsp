@@ -59,12 +59,27 @@
   <input type="submit" value="파일업로드">
 </form>  --%>
 <script>
-	var j = JSON.parse(app.member());
-	$('#memberId').text(j.memberId);
-	$('#name').text(j.name);
-	$('#age').text(j.age);
-	$('#gender').text(j.gender);
-	$('#roll').val(j.roll).attr("selected","selected");
-	$("#"+j.teamId).attr('checked', 'checked');
+	$('#memberId').text("${member.memberId}");
+	$('#name').text("${member.name}");
+	$('#age').text("${member.age}");
+	$('#gender').text("${member.gender}");
+	$('#roll').val("${member.roll}").attr("selected","selected");
+	$("#${member.teamId}").attr('checked', 'checked');
+	
+	$("#modifyBtn").click(()=>{
+		if(($('#pass').val() == "")){
+			$('#modifyFrom').prepend(
+			$("<input/>").attr({
+				type:"hidden",
+				name:"pass",
+				value:"${member.pass}"
+				}));
+		}
+		
+		$('#modifyFrom').attr({
+			action:"${context}/member/modify",
+			method:"POST"
+		}).submit();
+	});
 </script>
 
