@@ -14,7 +14,7 @@
   	SELECT
   	#{memberId},#{pass},#{teamId},#{roll},#{name},#{ssn},#{age},#{gender},#{subject}
   	FROM DUAL
-  	WHERE NOT EXISTS(SELECT MEMBERID FROM MEMBER WHERE MEMBERID LIKE #{memberId})
+  	WHERE NOT EXISTS (SELECT MEMBERID FROM MEMBER WHERE MEMBERID LIKE #{memberId})
   </insert>
   <select id="login" resultType="com.gms.web.domain.MemberDTO">
   	SELECT * FROM MEMBER

@@ -36,13 +36,11 @@ public class BoardController {
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
 	public String modify(@ModelAttribute ArticleDTO article,Model model) {
 		boardService.modify(article); 
-		//수정된 정보를 retrieve에 보여주는 방법? AJAX에서 하자!
 		return "login__success";
 	}
 	@RequestMapping(value="/remove",method=RequestMethod.POST)
 	public String remove(@ModelAttribute ArticleDTO article) {
 		return (boardService.remove(article))?"redirect:/":"enter:member/remove.tiles";
-		
 	}
 	
 	@RequestMapping("/fileupload")

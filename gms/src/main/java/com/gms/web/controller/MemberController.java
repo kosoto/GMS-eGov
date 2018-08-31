@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.service.MemberService;
@@ -42,9 +43,9 @@ public class MemberController {
 		return "login__success";
 	}
 	@RequestMapping(value="/remove",method=RequestMethod.POST)
-	public String remove(@ModelAttribute("mem") MemberDTO mem, Model model) {
+	public String remove(@ModelAttribute("mem") MemberDTO mem, SessionStatus sessionStatus) {
 		boolean removeSuccess = (memberService.remove(mem));
-		if(removeSuccess) model.addAttribute("member",member);
+		if(removeSuccess) sessionStatus.setComplete();
 		return (removeSuccess)?"redirect:/":"enter:member/remove.tiles";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -54,10 +55,9 @@ public class MemberController {
 		return (m !=null)?"login__success":"redirect:/move/enter/member/login";
 	}
 	@RequestMapping("/logout")
-	public String logout(Model model) {
-		model.addAttribute("member",member); // 됨 @Autowired MemberDTO member 는 property들이 null인 인스턴스 변수
+	public String logout(SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		return "redirect:/";
-		
 	}
 	@RequestMapping("/fileupload")
 	public void fileupload() {}
