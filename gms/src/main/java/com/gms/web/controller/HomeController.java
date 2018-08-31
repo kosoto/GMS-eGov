@@ -18,9 +18,7 @@ public class HomeController {
 	static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session, HttpServletRequest request) {
-		String context = request.getContextPath();
-		logger.info("Welcome home! The Context Path is {}.", context);
-		session.setAttribute("context", context); 
+		session.setAttribute("context", request.getContextPath()); 
 		return "public:common/content.tiles";
 	}
 	@RequestMapping("/move/{prefix}/{dir}/{page}")
@@ -28,7 +26,6 @@ public class HomeController {
 			@PathVariable String prefix,
 			@PathVariable String dir,
 			@PathVariable String page) {
-		logger.info("HomController ::: move() {}.", "ENTER");
 		return prefix+":"+dir+"/"+page+".tiles";
 	}
 }

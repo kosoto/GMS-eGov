@@ -11,7 +11,7 @@
 	</form><br>
 </section>
 <script>
-$("#login_btn").click(()=>{
+$("#login_btn").click(function(){
 	$("#loginForm").attr({
 		action:"${context}/member/login",
 		method:"POST"

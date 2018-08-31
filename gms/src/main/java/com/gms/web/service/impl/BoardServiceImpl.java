@@ -1,15 +1,20 @@
 package com.gms.web.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gms.web.domain.ArticleDTO;
+import com.gms.web.mapper.BoardMapper;
 import com.gms.web.service.BoardService;
 @Service
 public class BoardServiceImpl implements BoardService{
-
+	@Autowired BoardMapper boardMapper;
 	@Override
 	public void add(ArticleDTO p) {
-		// TODO Auto-generated method stub
+		p.setRegdate(new SimpleDateFormat("yy:MM:dd").format(new Date()));
+		boardMapper.insert(p);
 		
 	}
 

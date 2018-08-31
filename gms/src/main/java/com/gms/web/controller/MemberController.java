@@ -1,5 +1,8 @@
 package com.gms.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,8 @@ public class MemberController {
 	@Autowired MemberDTO member;
 	@Autowired MemberService memberService;
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String add(@ModelAttribute("member") MemberDTO member) {
-		logger.info("회원가입{}","진입");
-		logger.info("name is {}",member.getName());
-		memberService.add(member);
-		return "redirect:/move/enter/member/login";
+	public String add(@ModelAttribute("mem") MemberDTO mem) {
+		return (memberService.add(mem))?"redirect:/move/enter/member/login":"enter:member/add.tiles";
 	}
 	@RequestMapping("/list")
 	public void list() {}
@@ -36,25 +36,26 @@ public class MemberController {
 	@RequestMapping("/count")
 	public void count() {}
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
-	public String modify(@ModelAttribute MemberDTO member,Model model) {
-		memberService.modify(member); 
-		//수정된 정보를 retrieve에 보여주는 방법? AJAX에서 하자!
+	public String modify(@ModelAttribute("mem") MemberDTO mem, Model model) {
+		memberService.modify(mem);
+		model.addAttribute("member", memberService.retrieve(mem));
 		return "login__success";
 	}
 	@RequestMapping(value="/remove",method=RequestMethod.POST)
-	public String remove(@ModelAttribute MemberDTO member) {
-		return (memberService.remove(member))?"redirect:/":"enter:member/remove.tiles";
-		
+	public String remove(@ModelAttribute("mem") MemberDTO mem, Model model) {
+		boolean removeSuccess = (memberService.remove(mem));
+		if(removeSuccess) model.addAttribute("member",member);
+		return (removeSuccess)?"redirect:/":"enter:member/remove.tiles";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@ModelAttribute MemberDTO member,
-			Model model) {
-		MemberDTO m = memberService.login(member);
+	public String login(@ModelAttribute("mem") MemberDTO mem,Model model) {
+		MemberDTO m = memberService.login(mem);
 		if(m != null) model.addAttribute("member",m);
 		return (m !=null)?"login__success":"redirect:/move/enter/member/login";
 	}
 	@RequestMapping("/logout")
-	public String logout() {
+	public String logout(Model model) {
+		model.addAttribute("member",member); // 됨 @Autowired MemberDTO member 는 property들이 null인 인스턴스 변수
 		return "redirect:/";
 		
 	}

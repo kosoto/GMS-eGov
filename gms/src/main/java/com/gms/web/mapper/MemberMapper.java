@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.gms.web.domain.MemberDTO;
 @Repository
 public interface MemberMapper {
-	public void insert(MemberDTO p);
+	public boolean insert(MemberDTO p);
 	public List<?> selectList(Map<?,?>p);
 	public List<?> selectSome(Map<?,?>p);
 	public MemberDTO selectOne(MemberDTO p);

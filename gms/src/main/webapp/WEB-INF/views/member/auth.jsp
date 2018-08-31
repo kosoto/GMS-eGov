@@ -37,24 +37,22 @@
     </nav>
 </div>
 <script>
-$("#logout").click(()=>{
-	app.session.removeMember();
+$("#logout").click(function(){
 	location.href = "${context}/member/logout";
 });
-$("#modify").click(()=>{
+$("#modify").click(function(){
 	location.href = "${context}/move/enter/member/modify";
 });
-$('#remove').click(()=>{
+$('#remove').click(function(){
 	location.href = "${context}/move/enter/member/remove";
 });
-$("#mypage").click(()=>{
+$("#mypage").click(function(){
 	location.href = "${context}/move/auth/member/retrieve";
 });
-$('#board_write').click(()=>{
-	alert('board_write 클릭');
+$('#board_write').click(function(){
 	location.href = "${context}/move/auth/board/register";
 });
-$('#board_list').click(()=>{
-	alert('board_list 클릭');
+$('#board_list').click(function(){
+	location.href = "${context}/move/auth/board/listAll";
 });
 </script>

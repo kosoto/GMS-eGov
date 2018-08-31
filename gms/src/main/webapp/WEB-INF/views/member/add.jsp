@@ -47,9 +47,10 @@
 	</form>
 </section>
 <script>
-$("#joinBth").click(()=>{
+$("#joinBth").click(function(){
 	$('#joinForm').attr({
-		action:app.x()+"/member/add",
+		action:"${context}/member/add",
 		method:"POST"
-	}).submit();
+	}).submit()
+});
 </script>

@@ -19,11 +19,11 @@ public class MemberServiceImpl implements MemberService {
 	Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	@Autowired MemberMapper memberMapper;
 	@Override
-	public void add(MemberDTO p) {
+	public boolean add(MemberDTO p) {
 		String ssn = p.getSsn();
 		p.setAge(String.valueOf((Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))) - (Integer.parseInt("19"+ssn.substring(0, 2)))+1));
 		p.setGender(((Integer.parseInt(ssn.substring(7,8)) % 2 == 1)?"남":"여"));
-		memberMapper.insert(p);
+		return memberMapper.insert(p);
 	}
 
 	@Override

@@ -8,5 +8,6 @@ import lombok.Data;
 @Data
 @Lazy
 public class ArticleDTO {
-	private String bno, title, content, writer, regdate, viewcnt;
+	private String bno, title, 
+		content, writer, regdate, viewcnt;
 }

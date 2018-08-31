@@ -83,7 +83,7 @@
 	
 	
 	<script>
-	app.init("${context}");
+	/* app.init("${context}");
 	app.session.setMember({
 		memberId:"${member.memberId}",
 		teamId:"${member.teamId}",
@@ -94,20 +94,9 @@
 		age:"${member.age}",
 		gender:"${member.gender}",
 		subject:"${member.subject}"
-	});
-/* 	if(member.name != ""){
-	 user.session({
-		memberId:"${member.memberId}",
-		teamId:"${member.teamId}",
-		name:"${member.name}",
-		ssn:"${member.ssn}",
-		roll:"${member.roll}",
-		pass:"${member.pass}",
-		age:"${member.age}",
-		gender:"${member.gender}",
-		subject:"${member.subject}"
-	}); 
-	} */
+	}); */
+	console.log("세션 확인 : ${member}");
+	
 	</script>
 </body>
 </html>

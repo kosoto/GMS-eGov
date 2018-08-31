@@ -14,7 +14,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post">
+<form role="form" id="article_form">
 	<div class="box-body">
 		<div class="form-group">
 			<label for="exampleInputEmail1">Title</label> 
@@ -35,7 +35,7 @@
 	<!-- /.box-body -->
 
 	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button id="article_btn" type="button" class="btn btn-primary">Submit</button>
 	</div>
 </form>
 
@@ -51,4 +51,12 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
+<script>
+$('#article_btn').click(()=>{
+	alert('article_btn 클릭');
+	$('#article_form').attr({
+		action:"${context}/board/add",
+		method:"POST"
+	}).submit();
+});
+</script>

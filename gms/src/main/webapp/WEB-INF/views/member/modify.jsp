@@ -26,13 +26,13 @@
 			<td id="age"></td>
 			<td><a id="moveUpdateTeamForm">팀명</a></td>
 			<td>
-				<input type="radio" name="teamId" id="ateam"
+				<input type="radio" name="teamId" id="ATEAM"
 					value="ATEAM" />걍놀자
-				<input type="radio" name="teamId" id="hteam"
+				<input type="radio" name="teamId" id="HTEAM"
 					value="HTEAM" />지은이네
-				<input type="radio" name="teamId" id="steam"
+				<input type="radio" name="teamId" id="STEAM"
 					value="STEAM" />왕거북이
-				<input type="radio" name="teamId" id="cteam"
+				<input type="radio" name="teamId" id="CTEAM"
 					value="CTEAM" />코딩짱 
 			</td>
 		</tr>
@@ -66,7 +66,7 @@
 	$('#roll').val("${member.roll}").attr("selected","selected");
 	$("#${member.teamId}").attr('checked', 'checked');
 	
-	$("#modifyBtn").click(()=>{
+	$("#modifyBtn").click(function(){
 		if(($('#pass').val() == "")){
 			$('#modifyFrom').prepend(
 			$("<input/>").attr({
@@ -75,7 +75,12 @@
 				value:"${member.pass}"
 				}));
 		}
-		
+		$('#modifyFrom').append(
+		$("<input/>").attr({
+			type:"hidden",
+			name:"memberId",
+			value:"${member.memberId}"
+			}));
 		$('#modifyFrom').attr({
 			action:"${context}/member/modify",
 			method:"POST"

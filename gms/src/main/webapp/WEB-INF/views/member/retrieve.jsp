@@ -31,11 +31,10 @@
 	</table>
 </section>
 <script>
-var j = JSON.parse(app.member());
-$('#memberId').text(j.memberId);
-$('#name').text(j.name);
-$('#age').text(j.age);
-$('#gender').text(j.gender);
-$('#roll').text(j.roll);
-$("#teamId").text(j.teamId);
+$('#memberId').text("${member.memberId}");
+$('#name').text("${member.name}");
+$('#age').text("${member.age}");
+$('#gender').text("${member.gender}");
+$('#roll').text("${member.roll}");
+$("#teamId").text("${member.teamId}");
 </script>

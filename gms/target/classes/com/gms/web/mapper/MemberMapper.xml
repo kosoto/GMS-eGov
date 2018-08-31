@@ -9,10 +9,12 @@
     AND PASS LIKE #{pass}
   </select>
   <insert id="insert">
-  	INSERT INTO MEMBER
+  	INSERT MEMBER
   	(MEMBERID,PASS,TEAMID,ROLL,NAME,SSN,AGE,GENDER,SUBJECT)
-  	VALUES
-  	(#{memberId},#{pass},#{teamId},#{roll},#{name},#{ssn},#{age},#{gender},#{subject})
+  	SELECT
+  	#{memberId},#{pass},#{teamId},#{roll},#{name},#{ssn},#{age},#{gender},#{subject}
+  	FROM DUAL
+  	WHERE NOT EXISTS(SELECT MEMBERID FROM MEMBER WHERE MEMBERID LIKE #{memberId})
   </insert>
   <select id="login" resultType="com.gms.web.domain.MemberDTO">
   	SELECT * FROM MEMBER
@@ -27,7 +29,7 @@
   	TEAMID = #{teamId}
   	WHERE MEMBERID LIKE #{memberId} 
   </update>
-  <delete id="delete">
+  <delete id="remove">
   	DELETE FROM MEMBER
   	WHERE MEMBERID LIKE #{memberId}
   	AND PASS LIKE #{pass}

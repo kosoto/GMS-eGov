@@ -8,7 +8,7 @@
 	</form>
 </div>
 <script>
-$("#removeBtn").click(()=>{
+$("#removeBtn").click(function(){
 	($("#removeForm")
 			.prepend($("<input/>")
 					.attr({
